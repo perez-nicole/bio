@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicole Perez | Data Scientist, Researcher, Writer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="side-nav">
+        <a href="#hero" class="dot active"></a>
+        <a href="#about" class="dot"></a>
+        <a href="#subscribe" class="dot"></a>
+        <a href="#works" class="dot"></a>
+        <a href="#connect" class="dot"></a>
+    </nav>
+
+    <section id="hero" class="section hero-bg">
+        <div class="container hero-content reveal">
+            <div class="hero-text">
+                <h1><span class="highlight">Hi, I'm Nicole Perez:</span></h1>
+                <h1 class="titles">data scientist, researcher, writer.</h1>
+            </div>
+            <div class="hero-image-wrapper">
+                <img src="img/IMG_1570.jpg" alt="Nicole Perez" class="rounded-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section about-bg">
+        <div class="container text-content reveal">
+            <hr class="short-line">
+            <h2>About me.</h2>
+            <p class="intro-word">I'm curiosity-driven to a fault.<br><br></p>
+            <div class="about-grid">
+                <p>From 2014-2015 I lived and taught English in the Republic of Georgia (Sakartvelo), and during my time there, I studied the Georgian language, explored ancient Roman ruins, and made treks to Israel, Armenia and eastern Europe. 
+                    The travels ignited in me an enduring fascination with the history and culture of the ancient Near East, and the interplay of anthropology, psychology and science with history.</p>
+                <br><br>
+                <p>Professionally, I’m a data science industry vet, having worked as a data scientist across domains as diverse as health and life sciences (UnitedHealth Group, Mercy), psychology and marketing (General Mills), and transportation/urban planning (Metropolitan Council). 
+                    I’ve authored numerous internal white papers de-complicating analytical findings for non-technical audiences.</p><br><br>
+                <p>I hold a master’s of arts in Social Sciences from the University of Chicago and a master’s of science in Data Science from the University of Minnesota. 
+                    At the University of Minnesota, I was also the recipient of a 2021-22 NSF NRT fellowship to conduct research on the detection of gravitational waves using modern machine learning techniques.</p>
+                    <br>
+            </div>
+        </div>
+    </section>
+
+    <section id="subscribe" class="section subscribe-bg">
+        <div class="container reveal">
+            <h2>Subscribe.</h2>
+            <p>Get some of my writings for free in your inbox. Don’t worry, I won’t email you too often.</p>
+            
+            <div id="subscribe-form-wrapper">
+                <div data-youform-embed data-form='r4h32nye' data-width='100%' data-height='600'></div>
+                <script src="https://app.youform.com/embed.js"></script>
+            </div>
+        </div>
+    </section>
+
+    <section id="works" class="section works-bg">
+        <div class="container reveal">
+            <h2 class="light-text">Selected works.</h2>
+            <div class="books-grid">
+                <div class="book">
+                    <a href="docs/PUL-thru - a high precision PU-learner-based EWS for student depression.pdf" target="_blank" class="work-link">
+                    <img src="img/thesis_network.jpg" alt="Book Cover">
+                    <p>2023. PUL-thru: a high-precision PU-learner-based EWS for student depression.</p>
+                </a>
+                </div>
+                <div class="book">
+                    <a href="docs/Optical spectra interpolation and inference.pdf" target="_blank" class="work-link">
+                    <img src="img/optical_spectra_cover.jpg" alt="Book Cover">
+                    <p>2022. Optical spectra interpolation and inference.</p>
+                </a>
+                </div>
+                <div class="book">
+                    <a href="docs/Effects of scRNA hyperparameter selection on downstream results and biological implications of findings.pdf" target="_blank" class="work-link">
+                    <img src="img/scrna_effects_graphs.jpg" alt="Book Cover">
+                    <p>2023. Effects of scRNA hyperparameter selection on downstream results and biological implications of findings.</p>
+                </a>
+                </div>
+            </div>
+            </div>
+            <!-- <ul class="works-list">
+                <li>2023. XXX. XXX</li>
+                <li>2023. XXX. XXX</li>
+                <li>2023. XXX. XXX</li>
+            </ul> -->
+        </div>
+    </section>
+
+    <section id="connect" class="section connect-bg" style="background-image: url('img/IMG_1851.jpg');">
+        <div class="overlay">
+            <div class="container center-content">
+                <h2>Connect</h2>
+                <div class="button-group">
+                    <a href="https://www.instagram.com/nicoleperezphoto" class="btn">Instagram</a>
+                    <a href="https://github.com/perez-nicole" class="btn">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-bg">
+        <div class="container reveal"> <h2>Drop me a line.</h2>
+            <p>Have an idea of how we can collab or a just general inquiry? I’d love to hear from you.</p>
+            
+            <div id="contact-form-wrapper">
+                <iframe src="https://app.youform.com/forms/h2akyfkt" loading="lazy" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0"></iframe>
+            </div>
+        </div>
+    </section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section");
+    const navDots = document.querySelectorAll(".side-nav .dot");
+
+    const observerOptions = {
+        // Trigger when 60% of the section is visible
+        threshold: 0.6 
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // Remove 'active' class from all dots
+                navDots.forEach((dot) => dot.classList.remove("active"));
+
+                // Find the dot that matches the current section ID and add 'active'
+                const activeDot = document.querySelector(`.side-nav a[href="#${entry.target.id}"]`);
+                if (activeDot) {
+                    activeDot.classList.add("active");
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Tell the observer to watch each section
+    sections.forEach((section) => {
+        observer.observe(section);
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Select only the reveal elements
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // Add the class to trigger the CSS animation
+                entry.target.classList.add("active");
+                
+                // Optional: Stop observing once the animation has played
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15 // Trigger when 15% of the element is visible
+    });
+
+    revealElements.forEach((el) => {
+        revealObserver.observe(el);
+    });
+});
+
+const connectSection = document.querySelector('.connect-bg');
+
+window.addEventListener('scroll', () => {
+    const scrollValue = window.scrollY;
+    const sectionTop = connectSection.offsetTop;
+    const viewportHeight = window.innerHeight;
+    const sectionHeight = connectSection.offsetHeight;
+
+    // Check if the section is in the viewport
+    if (scrollValue > sectionTop - viewportHeight && scrollValue < sectionTop + sectionHeight) {
+        
+        // 1. Calculate how far the section is from the center of the screen (0 to 1)
+        const relativeScroll = (scrollValue - (sectionTop - viewportHeight)) / (viewportHeight + sectionHeight);
+        
+        // 2. Adjust the speed and the range of movement
+        // A range of 20% to 80% ensures the image never hits the 0% or 100% boundary
+        const movementRange = 30; // Percentage of movement
+        const yPos = 50 + (relativeScroll - 0.5) * movementRange;
+        
+        connectSection.style.backgroundPositionY = `${yPos}%`;
+    }
+});
+
+</script>
+<script src="https://app.youform.com/embed.js"></script>
+</body>
+</html>
